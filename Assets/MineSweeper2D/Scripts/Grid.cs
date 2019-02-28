@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Minesweeper
 {
@@ -16,6 +18,7 @@ namespace Minesweeper
         private bool flagged;
         AudioSource aS;
         public AudioClip explosion, relief, heartBeat;
+        public Button playAgain;
 
         void Start()
         {
@@ -138,7 +141,13 @@ namespace Minesweeper
             if(NoMoreEmptyTiles())
             {
                 UncoverMines(1);
+                playAgain.enabled = true;
             }
+        }
+        public void PlayAgain()
+        {
+            playAgain.enabled = false;
+            SceneManager.LoadScene(0);
         }
 
      
