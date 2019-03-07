@@ -13,9 +13,11 @@ namespace Minesweeper
         public float spacing = .155f;
 
         private Tile[,] tiles;
+
         public Sprite flag;
         public Sprite noFlag;
         private bool flagged;
+
         AudioSource aS;
         public AudioClip explosion, relief, heartBeat;
         public Button playAgain;
