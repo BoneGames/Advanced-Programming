@@ -161,6 +161,6 @@ MonoBehaviour:
   z: 0
   isMine: 0
   isRevealed: 0
-  mineChance: 0.148
+  mineChance: 0.076
   minePrefab: {fileID: 1213200187652486, guid: 1a365e366319e0b40ac75f73b7f2ce8f, type: 2}
   textPrefab: {fileID: 1958542947951248, guid: 30b54b71daab9324793761c9727aebc3, type: 2}

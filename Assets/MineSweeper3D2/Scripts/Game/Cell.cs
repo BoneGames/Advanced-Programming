@@ -17,6 +17,9 @@ namespace MineSweeper3D2
         private Color originalColor;
         public bool isFlagged;
 
+        private Material originalMat;
+        public Material flagMat;
+
         [Range(0, 1)]
         public float mineChance = 0.15f;
 
@@ -35,6 +38,7 @@ namespace MineSweeper3D2
 
         void Start()
         {
+            originalMat = rend.material;
             originalColor = rend.material.color;
             // set mine chance
             isMine = Random.value < mineChance;
@@ -64,10 +68,12 @@ namespace MineSweeper3D2
 
         public void Flag()
         {
+            Debug.Log(gameObject.transform.position);
             // Toggle flagged
             isFlagged = !isFlagged;
             // Change the material
-            rend.material.color = isFlagged ? flagColor : originalColor;
+            rend.material = isFlagged ? originalMat : flagMat;
+            //rend.material.color = isFlagged ? flagColor : originalColor;
         }
 
         public void Reveal(int adjacentMines = 0)
@@ -96,8 +102,5 @@ namespace MineSweeper3D2
                 }
             }
         }
-
-        
     }
-
 }

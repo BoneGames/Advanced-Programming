@@ -22,7 +22,7 @@ namespace MineSweeper3D2
         void Update()
         {
             MouseOver();
-            UpdateGrid();
+            //UpdateGrid();
         }
 
         Cell GetHitCell(Vector2 mousePosition)
@@ -46,8 +46,9 @@ namespace MineSweeper3D2
                     SelectTile(hitCell);
                 }
             }
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(2))
             {
+                Debug.Log("1");
                 Cell hitCell = GetHitCell(Input.mousePosition);
                 if (hitCell)
                 {
@@ -213,6 +214,7 @@ namespace MineSweeper3D2
                 // This tile has been visited
                 visited[x, y, z] = true;
                 // Visit all other tiles around this tile
+                
                 FFuncover(x - 1, y, z, visited);
                 FFuncover(x + 1, y, z, visited);
 
@@ -221,6 +223,7 @@ namespace MineSweeper3D2
 
                 FFuncover(x, y, z - 1, visited);
                 FFuncover(x, y, z + 1, visited);
+                
             }
         }
 
@@ -232,16 +235,18 @@ namespace MineSweeper3D2
             {
                 for (int y = -1; y <= 1; y++)
                 {
-                    for (int z = -1; z < 1; z++)
+                    for (int z = -1; z <= 1; z++)
                     {
                         int desiredX = cell.x + x;
                         int desiredY = cell.y + y;
                         int desiredZ = cell.z + z;
+                        //Debug.Log("cell checked");
 
                         if (IsOutOfBounds(desiredX, desiredY, desiredZ))
                         {
-                            // Continue to next element in the loop
+
                             continue;
+
                         }
 
                         Cell currentCell = cells[desiredX, desiredY, desiredZ];
@@ -250,6 +255,7 @@ namespace MineSweeper3D2
                         {
                             count++;
                         }
+
                     }
 
                 }

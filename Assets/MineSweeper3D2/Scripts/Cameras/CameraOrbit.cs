@@ -31,6 +31,8 @@ public class CameraOrbit : MonoBehaviour {
             distance = Mathf.Clamp(distance, distanceMin, distanceMax);
         }
 
+        
+
         // Update transform
         transform.rotation = Quaternion.Euler(y, x, 0);
         transform.position = -transform.forward * distance;
